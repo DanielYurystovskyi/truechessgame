@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("TrueChessGame.GameEngine.GameEngine")]
+[assembly: AssemblyTitle("TrueChessGame.UnitTest")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("TrueChessGame.GameEngine.GameEngine")]
+[assembly: AssemblyProduct("TrueChessGame.UnitTest")]
 [assembly: AssemblyCopyright("Copyright ©  2015")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("228a2fa3-933b-42c7-bb04-92dabb52fc09")]
+[assembly: Guid("c5cd485d-bf17-4f6b-a19c-8615f2ff3c49")]
 
 // Version information for an assembly consists of the following four values:
 //

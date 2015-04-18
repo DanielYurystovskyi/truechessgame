@@ -7,7 +7,7 @@
     <ProjectGuid>{C006BA40-E114-4602-AA2A-2AD5BEA9C4AA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>TrueChessGame.GameEngine</RootNamespace>
+    <RootNamespace>TrueChessGame.GameEngine.GameEngine</RootNamespace>
     <AssemblyName>TrueChessGame.GameEngine</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -42,7 +42,7 @@
     <Compile Include="ChessBoard.cs" />
     <Compile Include="ChessPiece.cs" />
     <Compile Include="DefaultInfo.cs" />
-    <Compile Include="Move.cs" />
+    <Compile Include="FIDEnotation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Square.cs" />
   </ItemGroup>

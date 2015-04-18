@@ -4,10 +4,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TrueChessGame
+namespace TrueChessGame.GameEngine
 {
     public static class DefaultInfo
     {
+        public static bool IsWhiteMove;
+
+        public static bool WhiteWin;
+
+        public static bool BlackWin;
+
         public static bool WhiteAsideRookIsUnMoved;
 
         public static bool WhiteHsideRookIsUnMoved;
@@ -30,23 +36,11 @@ namespace TrueChessGame
 
         public static List<ChessBoard> GamePositions;
 
-        //static DefaultInfo()
-        //{
-        //    WhiteAsideRookIsUnMoved = true;
-        //    WhiteHsideRookIsUnMoved = true;
-        //    BlackAsideRookIsUnMoved = true;
-        //    BlackHsideRookIsUnMoved = true;
-        //    WhiteKingIsUnMoved = true;
-        //    BlackKingIsUnMoved = true;
-        //    MovesWithoutPawnOrCapture = 0;
-        //    EnPassantPossibleCapture = new Square();
-        //    WhiteEnPassantEndangered = false;
-        //    BlackEnPassantEndangered = false;
-        //    GamePositions = new List<ChessBoard>();
-        //}
-
         public static void SetDefaultValues()
         {
+             IsWhiteMove = true;
+             WhiteWin = false;
+             BlackWin = false;
             WhiteAsideRookIsUnMoved = true;
             WhiteHsideRookIsUnMoved = true;
             BlackAsideRookIsUnMoved = true;
