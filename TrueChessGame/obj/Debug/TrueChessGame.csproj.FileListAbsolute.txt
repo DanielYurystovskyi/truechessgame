@@ -1,0 +1,6 @@
+c:\users\daniel\documents\visual studio 2013\Projects\TrueChessGame\TrueChessGame\bin\Debug\TrueChessGame.exe.config
+c:\users\daniel\documents\visual studio 2013\Projects\TrueChessGame\TrueChessGame\bin\Debug\TrueChessGame.exe
+c:\users\daniel\documents\visual studio 2013\Projects\TrueChessGame\TrueChessGame\bin\Debug\TrueChessGame.pdb
+c:\users\daniel\documents\visual studio 2013\Projects\TrueChessGame\TrueChessGame\obj\Debug\TrueChessGame.csprojResolveAssemblyReference.cache
+c:\users\daniel\documents\visual studio 2013\Projects\TrueChessGame\TrueChessGame\obj\Debug\TrueChessGame.exe
+c:\users\daniel\documents\visual studio 2013\Projects\TrueChessGame\TrueChessGame\obj\Debug\TrueChessGame.pdb
