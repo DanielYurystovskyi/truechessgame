@@ -1,0 +1,34 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2013
+VisualStudioVersion = 12.0.31101.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueChessGame.ConsoleUI", "TrueChessGame\TrueChessGame.ConsoleUI.csproj", "{10BD5F3C-9D68-444B-90DC-DFEF6FA7381B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueChessGame.GameEngine", "TrueChessGame.GameEngine\TrueChessGame.GameEngine.csproj", "{C006BA40-E114-4602-AA2A-2AD5BEA9C4AA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueChessGame.UnitTest", "TrueChessGame.UnitTest\TrueChessGame.UnitTest.csproj", "{D3839567-3FAA-488F-A13C-1EECE447E5C3}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10BD5F3C-9D68-444B-90DC-DFEF6FA7381B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{10BD5F3C-9D68-444B-90DC-DFEF6FA7381B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10BD5F3C-9D68-444B-90DC-DFEF6FA7381B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{10BD5F3C-9D68-444B-90DC-DFEF6FA7381B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C006BA40-E114-4602-AA2A-2AD5BEA9C4AA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C006BA40-E114-4602-AA2A-2AD5BEA9C4AA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C006BA40-E114-4602-AA2A-2AD5BEA9C4AA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C006BA40-E114-4602-AA2A-2AD5BEA9C4AA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3839567-3FAA-488F-A13C-1EECE447E5C3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3839567-3FAA-488F-A13C-1EECE447E5C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3839567-3FAA-488F-A13C-1EECE447E5C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3839567-3FAA-488F-A13C-1EECE447E5C3}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
