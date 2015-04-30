@@ -124,9 +124,11 @@ namespace TrueChessGame.GameEngine
         {
             return (sbyte)(-1 * GetSbyteFromWhitePieceLetter(letter));
         }
-
+        
+        // Code Review: Аргументи методу повинні починатися з малої літери.
         public static bool CheckIfArePossibleMoves(ChessBoard board, bool IsWhite)
         {
+            // Code Review: Назва локальної змінної повинна починатися з малої літери.
             int comparerresult = IsWhite ? 1 : -1;
             List<Square> pieces = new List<Square>();
             for (char tfile = 'a'; tfile <= 'h'; tfile++)
@@ -150,7 +152,9 @@ namespace TrueChessGame.GameEngine
             }
             return false;
         }
-
+        
+        // Code Review: Надто об'ємний метод.
+        // Code Review: Аргументи методу повинні починатися з малої літери.
         private static ChessBoard PerformCastling(ChessBoard board, bool IsWhite, bool IsKingCastling, out char kingfile)
         {
             ChessBoard tempboard=board.ShallowCopy();
@@ -251,7 +255,9 @@ namespace TrueChessGame.GameEngine
                 throw new ArgumentException("Wrong notation");
             }
         }
-
+        
+        // Code Review: Надто об'ємний метод.
+        // Code Review: Потрібно розділяти умови дужками () в операторах if.
         private static ChessBoard PerformWhiteAmbiguousMove(ChessBoard board, string notation, ChessBoard tempboard)
         {
             char piecefile = default(char);
@@ -598,6 +604,7 @@ namespace TrueChessGame.GameEngine
             }
         }
 
+        // Code Review: Надто об'ємний метод.
         private static ChessBoard PerformBlackAmbiguousMove(ChessBoard board, string notation, ChessBoard tempboard)
         {
             char piecefile = default(char);
