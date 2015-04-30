@@ -85,7 +85,8 @@ namespace TrueChessGame.GameEngine
             List<Square> result = new List<Square>();
             return result;
         }
-
+        // Code Review: Надто об'ємний метод.
+        // Code Review: Потрібно розділяти умови дужками () в операторах if.
         public static ChessBoard PerformWhiteMove(ChessBoard board, string notation)
         {
             ChessBoard tempboard = board.ShallowCopy();
