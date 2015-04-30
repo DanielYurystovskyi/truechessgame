@@ -29,6 +29,7 @@ namespace TrueChessGame.GameEngine
 
         public static void DrawChessBoard(ChessBoard board)
         {
+            // Code Review: Назва локальної змінної повинна починатися з малої літери.
             bool IsWhite = true;
             //Console.WriteLine();
             Console.Write("   ");
@@ -89,6 +90,7 @@ namespace TrueChessGame.GameEngine
 
         public static void DrawRevertedChessBoard(ChessBoard board)
         {
+            // Code Review: Назва локальної змінної повинна починатися з малої літери.
             bool IsWhite = true;
             //Console.WriteLine();
             Console.Write("   ");
