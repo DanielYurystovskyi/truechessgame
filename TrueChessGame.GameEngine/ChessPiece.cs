@@ -20,7 +20,8 @@ namespace TrueChessGame.GameEngine
            // tempboard.DebugConsoleSimpleDraw(); Console.WriteLine();
             return tempboard;
         }
-
+        
+        // Code Review: Назваргументів методу повинні починатися з малої літери.
         public static List<ChessBoard> AddNewPosition(List<ChessBoard> ResultedPositionsList, ChessBoard position, bool IsWhite)
         {
             if (IsWhite && WhiteKing.IsSafe(position))
@@ -247,6 +248,7 @@ namespace TrueChessGame.GameEngine
 
         private static bool CheckSquareForBlackRookOrQueen(ChessBoard board, Square CheckedSquare, List<Square> result)
         {
+            // Code Review: Назва локальної змінної повинна починатися з малої літери.
             bool ToBreakNow = false;
             if (board[CheckedSquare]>0)
             {
@@ -268,6 +270,7 @@ namespace TrueChessGame.GameEngine
         {
             for (char tchar = (char)(file - 1); tchar >= 'a'; tchar--)
             {
+                // Code Review: Назва локальної змінної повинна починатися з малої літери.
                 bool EndOfCycle = CheckSquareForBlackRookOrQueen(board, new Square(tchar, rank), result);
                 if (EndOfCycle)
                 {
@@ -280,6 +283,7 @@ namespace TrueChessGame.GameEngine
         {
             for (char tchar = (char)(file + 1); tchar <= 'h'; tchar++)
             {
+                // Code Review: Назва локальної змінної повинна починатися з малої літери.
                 bool EndOfCycle = CheckSquareForBlackRookOrQueen(board, new Square(tchar, rank), result);
                 if (EndOfCycle)
                 {
@@ -292,6 +296,7 @@ namespace TrueChessGame.GameEngine
         {
             for (int i = rank - 1; i >= 1; i--)
             {
+                // Code Review: Назва локальної змінної повинна починатися з малої літери.
                 bool EndOfCycle = CheckSquareForBlackRookOrQueen(board, new Square(file, i), result);
                 if (EndOfCycle)
                 {
@@ -304,6 +309,7 @@ namespace TrueChessGame.GameEngine
         {
             for (int i = rank + 1; i <= 8; i++)
             {
+                // Code Review: Назва локальної змінної повинна починатися з малої літери.
                 bool EndOfCycle = CheckSquareForBlackRookOrQueen(board, new Square(file, i), result);
                 if (EndOfCycle)
                 {
