@@ -4,6 +4,9 @@ using TrueChessGame.GameEngine;
 
 namespace TrueChessGame.UnitTest
 {
+    // Code Review: Всі тести в одному класі, потрібно структуравти їх подібно до структури GameEngine.
+    // Code Review: Не весь код покрито тестами - покрито 90%.
+    // Code Review: Деякі тестові методи слід розбити на менші для легшого відловлення помилки.
     [TestClass]
     public class TestClass
     {
