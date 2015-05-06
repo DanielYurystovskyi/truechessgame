@@ -19,6 +19,7 @@ namespace TrueChessGame.ConsoleUI
             string notation = "";
             List<string> gamestory = new List<string>();
             string move = "";
+            // Code Review: Назва локальної змінної повинна починатися з малої літери.
             int NumberOfMoves=1;
             int rows = 20;
             int rowwidth = 20;

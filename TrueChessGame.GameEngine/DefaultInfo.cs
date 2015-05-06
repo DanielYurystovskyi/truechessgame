@@ -8,6 +8,8 @@ namespace TrueChessGame.GameEngine
 {
     public static class DefaultInfo
     {
+        // Code Review: Поля класу не повинні бути public.
+        // Code Review: Вданому випадку їх потрібно замінити на Automatic Properties з приватним сеттером.
         public static bool IsWhiteMove;
 
         public static bool WhiteWin;

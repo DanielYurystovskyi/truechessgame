@@ -47,6 +47,7 @@ namespace TrueChessGame.GameEngine
 
         public ChessBoard()
         {
+            // Code Review: Неіменована константа
             height = 8;
             squares = new sbyte[height, height];
 
@@ -54,6 +55,7 @@ namespace TrueChessGame.GameEngine
 
         public ChessBoard(byte heightToSet)
         {
+            // Code Review: Неіменована константа
             if (heightToSet > 26)
             {
                 height = 26;
