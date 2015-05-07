@@ -6,10 +6,18 @@ using System.Threading.Tasks;
 
 namespace TrueChessGame.GameEngine
 {
+    /*			
+			Review VV:
+	            1) рекомендую реалізувати функції цього класу як нестатичні
+                2) слід розділити ігрову логіку і шахову нотацію на різні нестатичні класи
+	*/
     public class FIDEnotation
     {
         public delegate List<ChessBoard> GetPiecePositionsType(ChessBoard board, char file, sbyte rank);
-
+        /*			
+			Review VV:
+			    таку залежність краще реалізувати як Dictionary
+		*/
         public static char GetLetter(sbyte piece)
         {
             switch (piece)
@@ -42,26 +50,29 @@ namespace TrueChessGame.GameEngine
                     return ' ';
             }
         }
-
-        public static GetPiecePositionsType GetWhitePiecePositionsType (char letter)
+        /*			
+			Review VV:
+			    таку залежність краще реалізувати як Dictionary
+		*/
+        public static GetPiecePositionsType GetWhitePiecePositionsType(char letter)
         {
             GetPiecePositionsType result;
             switch (letter)
             {
                 case 'K':
-                    result=WhiteKing.GetPossiblePositions;
+                    result = WhiteKing.GetPossiblePositions;
                     break;
                 case 'Q':
-                    result=WhiteQueen.GetPossiblePositions;
+                    result = WhiteQueen.GetPossiblePositions;
                     break;
                 case 'R':
-                    result=WhiteRook.GetPossiblePositions;
+                    result = WhiteRook.GetPossiblePositions;
                     break;
                 case 'B':
-                    result=WhiteBishop.GetPossiblePositions;
+                    result = WhiteBishop.GetPossiblePositions;
                     break;
                 case 'N':
-                    result=WhitekNight.GetPossiblePositions;
+                    result = WhitekNight.GetPossiblePositions;
                     break;
                 case 'P':
                     result = WhitePawn.GetPossiblePositions;
@@ -71,7 +82,10 @@ namespace TrueChessGame.GameEngine
             }
             return result;
         }
-
+        /*			
+			Review VV:
+			    таку залежність краще реалізувати як Dictionary
+		*/
         public static GetPiecePositionsType GetBlackPiecePositionsType(char letter)
         {
             GetPiecePositionsType result;
@@ -100,10 +114,13 @@ namespace TrueChessGame.GameEngine
             }
             return result;
         }
-
+        /*			
+			Review VV:
+			    таку залежність краще реалізувати як Dictionary
+		*/
         private static sbyte GetSbyteFromWhitePieceLetter(char letter)
         {
-            switch(letter)
+            switch (letter)
             {
                 case 'K':
                     return (sbyte)DefaultPieces.WhiteKing;
@@ -133,7 +150,7 @@ namespace TrueChessGame.GameEngine
             {
                 for (sbyte trank = 1; trank <= 8; trank++)
                 {
-                    if (board[tfile, trank].CompareTo(0)==comparerresult)
+                    if (board[tfile, trank].CompareTo(0) == comparerresult)
                     {
                         pieces.Add(new Square(tfile, trank));
                     }
@@ -153,7 +170,7 @@ namespace TrueChessGame.GameEngine
 
         private static ChessBoard PerformCastling(ChessBoard board, bool IsWhite, bool IsKingCastling, out char kingfile)
         {
-            ChessBoard tempboard=board.ShallowCopy();
+            ChessBoard tempboard = board.ShallowCopy();
             sbyte castlingrank;
             sbyte kingsbyte;
             sbyte rooksbyte;
@@ -161,14 +178,14 @@ namespace TrueChessGame.GameEngine
             if (IsWhite)
             {
                 castlingrank = 1;
-                kingsbyte =(sbyte) DefaultPieces.WhiteKing;
-                rooksbyte = (sbyte) DefaultPieces.WhiteRook;
+                kingsbyte = (sbyte)DefaultPieces.WhiteKing;
+                rooksbyte = (sbyte)DefaultPieces.WhiteRook;
             }
             else
             {
                 castlingrank = 8;
-                kingsbyte = (sbyte) DefaultPieces.BlackKing;
-                rooksbyte = (sbyte) DefaultPieces.BlackRook;
+                kingsbyte = (sbyte)DefaultPieces.BlackKing;
+                rooksbyte = (sbyte)DefaultPieces.BlackRook;
             }
             kingfile = Piece.GetPosition(board, kingsbyte).file;
             if (IsKingCastling)
@@ -213,9 +230,9 @@ namespace TrueChessGame.GameEngine
             {
                 return PerformWhiteQueenCastling(board, ref tempboard);
             }
-            else if (notation.Length>0 && notation[0]<='h' && notation[0]>='a')
+            else if (notation.Length > 0 && notation[0] <= 'h' && notation[0] >= 'a')
             {
-                if ( (notation.Length == 2 && notation[1]<='6' && notation[1]>='3' )||(notation.Length==3 && notation[1]=='8' && notation[2]>='A' && notation[2]<='Z' ))
+                if ((notation.Length == 2 && notation[1] <= '6' && notation[1] >= '3') || (notation.Length == 3 && notation[1] == '8' && notation[2] >= 'A' && notation[2] <= 'Z'))
                 {
                     return PerformWhitePawnMove(board, notation, tempboard);
                 }
@@ -229,15 +246,15 @@ namespace TrueChessGame.GameEngine
                     throw new ArgumentException("Wrong move");
                 }
             }
-            else if (notation.Length>0 && notation[0]<='Z' && notation[0]>='A')
+            else if (notation.Length > 0 && notation[0] <= 'Z' && notation[0] >= 'A')
             {
                 //Ne4 
-                if ( notation.Length==3 && notation[1]<='h' && notation[1]>='a' && notation[2]>='0' && notation[2]<='8' )
+                if (notation.Length == 3 && notation[1] <= 'h' && notation[1] >= 'a' && notation[2] >= '0' && notation[2] <= '8')
                 {
                     return PerformWhiteNonAmbiguousMove(board, notation, tempboard);
                 }
                 //Nbd2 Nb5d2
-                else if (notation.Length<=5 && notation.Length>=4 && notation[2]!='x')
+                else if (notation.Length <= 5 && notation.Length >= 4 && notation[2] != 'x')
                 {
                     return PerformWhiteAmbiguousMove(board, notation, tempboard);
                 }
@@ -487,7 +504,7 @@ namespace TrueChessGame.GameEngine
                 {
                     pawnrank = (sbyte)(Char.GetNumericValue(notation[1]) - 1);
                 }
-                else if (board[pawnfile, (sbyte)(Char.GetNumericValue(notation[1]) - 2)] == (sbyte)DefaultPieces.WhitePawn && board[pawnfile, (sbyte)(Char.GetNumericValue(notation[1]) - 1)]==0)
+                else if (board[pawnfile, (sbyte)(Char.GetNumericValue(notation[1]) - 2)] == (sbyte)DefaultPieces.WhitePawn && board[pawnfile, (sbyte)(Char.GetNumericValue(notation[1]) - 1)] == 0)
                 {
                     pawnrank = (sbyte)(Char.GetNumericValue(notation[1]) - 2);
                 }
@@ -558,10 +575,10 @@ namespace TrueChessGame.GameEngine
             {
                 return PerformBlackQueenCastling(board, ref tempboard);
             }
-            else if (notation.Length>0 && notation[0] <= 'h' && notation[0] >= 'a')
+            else if (notation.Length > 0 && notation[0] <= 'h' && notation[0] >= 'a')
             {
                 //e5 e8Q
-                if ((notation.Length == 2 && notation[1] <= '7' && notation[1] >= '2') || (notation.Length == 3 && notation[1]=='1' && notation[2] <= 'Z' && notation[2] >= 'A'))
+                if ((notation.Length == 2 && notation[1] <= '7' && notation[1] >= '2') || (notation.Length == 3 && notation[1] == '1' && notation[2] <= 'Z' && notation[2] >= 'A'))
                 {
                     return PerformBlackPawnMove(board, notation, tempboard);
                 }
@@ -575,7 +592,7 @@ namespace TrueChessGame.GameEngine
                     throw new ArgumentException("Wrong move");
                 }
             }
-            else if (notation.Length>0 && notation[0] <= 'Z' && notation[0] >= 'A')
+            else if (notation.Length > 0 && notation[0] <= 'Z' && notation[0] >= 'A')
             {
                 //Ne4 
                 if (notation.Length == 3 && notation[1] <= 'h' && notation[1] >= 'a' && notation[2] >= '0' && notation[2] <= '8')
@@ -810,7 +827,7 @@ namespace TrueChessGame.GameEngine
                 {
                     tempboard[pawnfile, pawnrank - 1] = GetSbyteFromBlackPieceLetter(notation[2]);
                 }
-                
+
                 if (BlackPawn.GetPossiblePositions(board, pawnfile, pawnrank).Contains(tempboard))
                 {
 
@@ -830,7 +847,7 @@ namespace TrueChessGame.GameEngine
                 {
                     pawnrank = (sbyte)(Char.GetNumericValue(notation[1]) + 1);
                 }
-                else if (board[pawnfile, (sbyte)(Char.GetNumericValue(notation[1]) + 2)] == (sbyte)DefaultPieces.BlackPawn && board[pawnfile, (sbyte)(Char.GetNumericValue(notation[1])+1)]==0)
+                else if (board[pawnfile, (sbyte)(Char.GetNumericValue(notation[1]) + 2)] == (sbyte)DefaultPieces.BlackPawn && board[pawnfile, (sbyte)(Char.GetNumericValue(notation[1]) + 1)] == 0)
                 {
                     pawnrank = (sbyte)(Char.GetNumericValue(notation[1]) + 2);
                 }

@@ -8,7 +8,13 @@ namespace TrueChessGame.GameEngine
 {
     public struct Square
     {
-       public char file;
+        /*			
+			Review VV:
+			    1) поля не слід робити публічними
+                2) імена полів повинні розпочинатися з символу підкреслення
+		*/
+
+        public char file;
        
        public sbyte rank;
 
@@ -33,6 +39,10 @@ namespace TrueChessGame.GameEngine
 
         public static sbyte ReverseRank(sbyte rank)
         {
+            /*			
+			    Review VV:
+			        рекомендую реалізувати цю функцію більш раціонально - однією формулою
+		    */
             switch (rank)
             {
                 case 1: return 8;
