@@ -37,11 +37,11 @@ namespace TrueChessGame.GameEngine
         {
             get
             {
-                return squares[temp.file - 97, temp.rank - 1];
+                return squares[temp._file - 97, temp._rank - 1];
             }
             set
             {
-                squares[temp.file - 97, temp.rank - 1] = value;
+                squares[temp._file - 97, temp._rank - 1] = value;
             }
         }
 
@@ -124,8 +124,8 @@ namespace TrueChessGame.GameEngine
             }
             return result;
         }
-
-        public ChessBoard ShallowCopy()
+        
+        public ChessBoard DeepCopy()
         {
             return new ChessBoard(this);
         }

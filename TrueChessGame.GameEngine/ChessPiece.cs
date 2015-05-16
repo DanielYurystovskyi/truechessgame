@@ -6,52 +6,81 @@ using System.Threading.Tasks;
 
 namespace TrueChessGame.GameEngine
 {
+    /*			
+		Review VV:
+		    для читабельності такі записи краще робити у багато рядків	
+	*/
+    public enum DefaultPieces : sbyte
+    {
+        BlackKing = -6,
+        BlackQueen = -5,
+        BlackRook = -4,
+        BlackBishop = -3,
+        BlackkNight = -2,
+        BlackPawn = -1,
+        Empty = 0,
+        WhitePawn = 1,
+        WhitekNight = 2,
+        WhiteBishop = 3,
+        WhiteRook = 4,
+        WhiteQueen = 5,
+        WhiteKing = 6
+    };
 
-    public enum DefaultPieces : sbyte { BlackKing = -6, BlackQueen = -5, BlackRook = -4, BlackBishop = -3, BlackkNight = -2, BlackPawn = -1, Empty = 0, WhitePawn = 1, WhitekNight = 2, WhiteBishop = 3, WhiteRook = 4, WhiteQueen = 5, WhiteKing = 6 };
+    /*			
+		Review VV:
+		    1) не зрозуміле призначення цього класу
+            на мою думку, його функції повинні бути нестатичними функціями сутності "Game"	
+            2) всі функції класів-фігур повинні бути нестатичними
 
+	*/
     public class Piece
     {
         public static ChessBoard PerformMove(ChessBoard board, Square oldposition, Square newposition)
         {
-            sbyte piecetype=board[oldposition.file, oldposition.rank];
-            ChessBoard tempboard = board.ShallowCopy();
-            tempboard[oldposition.file, oldposition.rank] = 0;
-            tempboard[newposition.file, newposition.rank] = piecetype;
-           // tempboard.DebugConsoleSimpleDraw(); Console.WriteLine();
+            sbyte piecetype = board[oldposition._file, oldposition._rank];
+            /*			
+			    Review VV:
+			        для чого необхідно робити копію ігрового поля?
+		    */
+            ChessBoard tempboard = board.DeepCopy();
+            tempboard[oldposition._file, oldposition._rank] = 0;
+            tempboard[newposition._file, newposition._rank] = piecetype;
+            // tempboard.DebugConsoleSimpleDraw(); Console.WriteLine();
             return tempboard;
         }
         
         // Code Review: Назваргументів методу повинні починатися з малої літери.
-        public static List<ChessBoard> AddNewPosition(List<ChessBoard> ResultedPositionsList, ChessBoard position, bool IsWhite)
+        public static List<ChessBoard> AddNewPosition(List<ChessBoard> resultedPositionsList, ChessBoard position, bool IsWhite)
         {
             if (IsWhite && WhiteKing.IsSafe(position))
             {
-                ResultedPositionsList.Add(position);
+                resultedPositionsList.Add(position);
             }
             else if (!IsWhite && BlackKing.IsSafe(position))
             {
-                ResultedPositionsList.Add(position);
+                resultedPositionsList.Add(position);
             }
-            return ResultedPositionsList;
+            return resultedPositionsList;
         }
 
         public static Square[] GetSimplekNightMoveDestinations(Square current)
         {
             Square[] moves = new Square[8];
-            moves[0] = new Square((char)(current.file + 1), current.rank + 2);
-            moves[1] = new Square((char)(current.file + 2), current.rank + 1);
-            moves[2] = new Square((char)(current.file + 2), current.rank - 1);
-            moves[3] = new Square((char)(current.file + 1), current.rank - 2);
-            moves[4] = new Square((char)(current.file - 1), current.rank + 2);
-            moves[5] = new Square((char)(current.file - 2), current.rank + 1);
-            moves[6] = new Square((char)(current.file - 2), current.rank - 1);
-            moves[7] = new Square((char)(current.file - 1), current.rank - 2);
+            moves[0] = new Square((char)(current._file + 1), current._rank + 2);
+            moves[1] = new Square((char)(current._file + 2), current._rank + 1);
+            moves[2] = new Square((char)(current._file + 2), current._rank - 1);
+            moves[3] = new Square((char)(current._file + 1), current._rank - 2);
+            moves[4] = new Square((char)(current._file - 1), current._rank + 2);
+            moves[5] = new Square((char)(current._file - 2), current._rank + 1);
+            moves[6] = new Square((char)(current._file - 2), current._rank - 1);
+            moves[7] = new Square((char)(current._file - 1), current._rank - 2);
             return moves;
         }
 
         public static Square[] GetSimpleKingMoveDestinations(Square current)
         {
-            char file = current.file; int rank = current.rank;
+            char file = current._file; int rank = current._rank;
             Square[] moves = new Square[8];
             moves[0] = new Square(file, rank + 1);
             moves[1] = new Square(file, rank - 1);
@@ -63,7 +92,7 @@ namespace TrueChessGame.GameEngine
             moves[7] = new Square((char)(file - 1), rank - 1);
             return moves;
         }
-        
+
         public static Square GetPosition(ChessBoard board, sbyte piece)
         {
             Square result = new Square();
@@ -73,8 +102,8 @@ namespace TrueChessGame.GameEngine
                 {
                     if (board[tfile, trank] == piece)
                     {
-                        result.file = tfile;
-                        result.rank = (sbyte)trank;
+                        result._file = tfile;
+                        result._rank = (sbyte)trank;
                         break;
                     }
                 }
@@ -84,12 +113,16 @@ namespace TrueChessGame.GameEngine
     }
 
     #region White Pieces
+    /*			
+		Review VV:
+		    не бачу сенсу в такому наслідуванні, оскільки всі функції класу	Piece статичні
+	*/
     public class WhitePiece : Piece
     {
         public static void GetDiagonalDestinations(ChessBoard board, ref List<Square> moves, Square current, int multfile, int multrank)
         {
-            char file = current.file;
-            int rank = current.rank;
+            char file = current._file;
+            int rank = current._rank;
             for (int i = 1; i < 8; i++)
             {
                 Square tempsquare=new Square((char)(file+multfile*i), rank+multrank*i);
@@ -115,22 +148,22 @@ namespace TrueChessGame.GameEngine
 
         public static void GetVerticalUpDestinations(ChessBoard board, List<Square> moves, Square current)
         {
-            for (int i = current.rank + 1; i <= 8; i++)
+            for (int i = current._rank + 1; i <= 8; i++)
             {
-                if (board[current.file, i] > 0)
+                if (board[current._file, i] > 0)
                 {
                     break;
                 }
                 else
                 {
-                    if (board[current.file, i] < 0)
+                    if (board[current._file, i] < 0)
                     {
-                        moves.Add(new Square(current.file, i));
+                        moves.Add(new Square(current._file, i));
                         break;
                     }
                     else
                     {
-                        moves.Add(new Square(current.file, i));
+                        moves.Add(new Square(current._file, i));
                     }
                 }
             }
@@ -139,22 +172,22 @@ namespace TrueChessGame.GameEngine
 
         public static void GetVerticalDownDestinations(ChessBoard board, List<Square> moves, Square current)
         {
-            for (int i = current.rank - 1; i >= 1; i--)
+            for (int i = current._rank - 1; i >= 1; i--)
             {
-                if (board[current.file, i] > 0)
+                if (board[current._file, i] > 0)
                 {
                     break;
                 }
                 else
                 {
-                    if (board[current.file, i] < 0)
+                    if (board[current._file, i] < 0)
                     {
-                        moves.Add(new Square(current.file, i));
+                        moves.Add(new Square(current._file, i));
                         break;
                     }
                     else
                     {
-                        moves.Add(new Square(current.file, i));
+                        moves.Add(new Square(current._file, i));
                     }
                 }
             }
@@ -162,22 +195,22 @@ namespace TrueChessGame.GameEngine
 
         public static void GetHorizontalLeftDestinations(ChessBoard board, List<Square> moves, Square current)
         {
-            for (char tchar = (char)(current.file - 1); tchar >= 'a'; tchar--)
+            for (char tchar = (char)(current._file - 1); tchar >= 'a'; tchar--)
             {
-                if (board[tchar, current.rank] > 0)
+                if (board[tchar, current._rank] > 0)
                 {
                     break;
                 }
                 else
                 {
-                    if (board[tchar, current.rank] < 0)
+                    if (board[tchar, current._rank] < 0)
                     {
-                        moves.Add(new Square(tchar, current.rank));
+                        moves.Add(new Square(tchar, current._rank));
                         break;
                     }
                     else
                     {
-                        moves.Add(new Square(tchar, current.rank));
+                        moves.Add(new Square(tchar, current._rank));
                     }
                 }
             }
@@ -185,22 +218,22 @@ namespace TrueChessGame.GameEngine
 
         public static void GetHorizontalRightDestinations(ChessBoard board, List<Square> moves, Square current)
         {
-            for (char tchar = (char)(current.file + 1); tchar <= 'h'; tchar++)
+            for (char tchar = (char)(current._file + 1); tchar <= 'h'; tchar++)
             {
-                if (board[tchar, current.rank] > 0)
+                if (board[tchar, current._rank] > 0)
                 {
                     break;
                 }
                 else
                 {
-                    if (board[tchar, current.rank] < 0)
+                    if (board[tchar, current._rank] < 0)
                     {
-                        moves.Add(new Square(tchar, current.rank));
+                        moves.Add(new Square(tchar, current._rank));
                         break;
                     }
                     else
                     {
-                        moves.Add(new Square(tchar, current.rank));
+                        moves.Add(new Square(tchar, current._rank));
                     }
                 }
             }
@@ -209,7 +242,7 @@ namespace TrueChessGame.GameEngine
         public static List<Square> GetPossibleBlackAttackersToSquare(ChessBoard board, Square goalsquare)
         {
             List<Square> result = new List<Square>();
-            char file = goalsquare.file; int rank = goalsquare.rank;
+            char file = goalsquare._file; int rank = goalsquare._rank;
             //check for Pawn
             if (file >= 'a' && file <= 'g' && rank<=7 && board[(char)(file + 1), rank + 1] == (sbyte)DefaultPieces.BlackPawn)
             {
@@ -249,21 +282,21 @@ namespace TrueChessGame.GameEngine
         private static bool CheckSquareForBlackRookOrQueen(ChessBoard board, Square CheckedSquare, List<Square> result)
         {
             // Code Review: Назва локальної змінної повинна починатися з малої літери.
-            bool ToBreakNow = false;
+            bool toBreakNow = false;
             if (board[CheckedSquare]>0)
             {
-                ToBreakNow = true;
+                toBreakNow = true;
             }
             else if (board[CheckedSquare]<0 && board[CheckedSquare]!=(sbyte)DefaultPieces.BlackRook && board[CheckedSquare]!=(sbyte)DefaultPieces.BlackQueen)
             {
-                ToBreakNow = true;
+                toBreakNow = true;
             }
             else if (board[CheckedSquare]==(sbyte)DefaultPieces.BlackRook || board[CheckedSquare]==(sbyte)DefaultPieces.BlackQueen)
             {
                 result.Add(CheckedSquare);
-                ToBreakNow=true;
+                toBreakNow=true;
             }
-            return ToBreakNow;
+            return toBreakNow;
         }
 
         private static void GetHorizontalLeftBlackAttackers(ChessBoard board, List<Square> result, char file, int rank)
@@ -271,8 +304,8 @@ namespace TrueChessGame.GameEngine
             for (char tchar = (char)(file - 1); tchar >= 'a'; tchar--)
             {
                 // Code Review: Назва локальної змінної повинна починатися з малої літери.
-                bool EndOfCycle = CheckSquareForBlackRookOrQueen(board, new Square(tchar, rank), result);
-                if (EndOfCycle)
+                bool endOfCycle = CheckSquareForBlackRookOrQueen(board, new Square(tchar, rank), result);
+                if (endOfCycle)
                 {
                     break;
                 }
@@ -284,8 +317,8 @@ namespace TrueChessGame.GameEngine
             for (char tchar = (char)(file + 1); tchar <= 'h'; tchar++)
             {
                 // Code Review: Назва локальної змінної повинна починатися з малої літери.
-                bool EndOfCycle = CheckSquareForBlackRookOrQueen(board, new Square(tchar, rank), result);
-                if (EndOfCycle)
+                bool endOfCycle = CheckSquareForBlackRookOrQueen(board, new Square(tchar, rank), result);
+                if (endOfCycle)
                 {
                     break;
                 }
@@ -297,8 +330,8 @@ namespace TrueChessGame.GameEngine
             for (int i = rank - 1; i >= 1; i--)
             {
                 // Code Review: Назва локальної змінної повинна починатися з малої літери.
-                bool EndOfCycle = CheckSquareForBlackRookOrQueen(board, new Square(file, i), result);
-                if (EndOfCycle)
+                bool endOfCycle = CheckSquareForBlackRookOrQueen(board, new Square(file, i), result);
+                if (endOfCycle)
                 {
                     break;
                 }
@@ -310,8 +343,8 @@ namespace TrueChessGame.GameEngine
             for (int i = rank + 1; i <= 8; i++)
             {
                 // Code Review: Назва локальної змінної повинна починатися з малої літери.
-                bool EndOfCycle = CheckSquareForBlackRookOrQueen(board, new Square(file, i), result);
-                if (EndOfCycle)
+                bool endOfCycle = CheckSquareForBlackRookOrQueen(board, new Square(file, i), result);
+                if (endOfCycle)
                 {
                     break;
                 }
@@ -320,8 +353,8 @@ namespace TrueChessGame.GameEngine
 
         private static void GetDiagonalBlackAttackers(ChessBoard board, List<Square> result, Square current, int multfile, int multrank)
         {
-            char file = current.file;
-            int rank = current.rank;
+            char file = current._file;
+            int rank = current._rank;
             for (int i = 1; i < 8; i++)
             {
                 Square tempsquare = new Square((char)(file + multfile * i), rank + multrank * i);
@@ -344,6 +377,8 @@ namespace TrueChessGame.GameEngine
                 }
             }
         }
+
+
     }
 
     public class WhitePawn
@@ -352,7 +387,7 @@ namespace TrueChessGame.GameEngine
         public static List<ChessBoard> GetPossiblePositions(ChessBoard board, char file, sbyte rank)
         {
             List<ChessBoard> result = new List<ChessBoard>();
-            ChessBoard tempboard = board.ShallowCopy();
+            ChessBoard tempboard = board.DeepCopy();
             Square currentposition=new Square(file, rank);
             if (DefaultInfo.BlackEnPassantEndangered)
             {
@@ -380,6 +415,7 @@ namespace TrueChessGame.GameEngine
             }
             if (rank <= 6 || result.Count == 0)
             {
+                //Console.WriteLine(result.Count);
                 return result;
             }
             else
@@ -390,12 +426,12 @@ namespace TrueChessGame.GameEngine
 
         private static void GetEnPassantPositions(ref List<ChessBoard> result, ChessBoard board, Square currentposition)
         {
-            ChessBoard tempboard = board.ShallowCopy();
-            bool CheckEnPassant = DefaultInfo.EnPassantPossibleCapture.rank == currentposition.rank + 1 && (DefaultInfo.EnPassantPossibleCapture.file == (char)(currentposition.file + 1) || DefaultInfo.EnPassantPossibleCapture.file == (char)(currentposition.file - 1));
+            ChessBoard tempboard = board.DeepCopy();
+            bool CheckEnPassant = DefaultInfo.EnPassantPossibleCapture._rank == currentposition._rank + 1 && (DefaultInfo.EnPassantPossibleCapture._file == (char)(currentposition._file + 1) || DefaultInfo.EnPassantPossibleCapture._file == (char)(currentposition._file - 1));
             if (CheckEnPassant)
             {
                 tempboard = Piece.PerformMove(board, currentposition, DefaultInfo.EnPassantPossibleCapture);
-                tempboard[DefaultInfo.EnPassantPossibleCapture.file, DefaultInfo.EnPassantPossibleCapture.rank - 1] = 0;
+                tempboard[DefaultInfo.EnPassantPossibleCapture._file, DefaultInfo.EnPassantPossibleCapture._rank - 1] = 0;
                 result = Piece.AddNewPosition(result, tempboard, true);
             }
         }
@@ -405,7 +441,7 @@ namespace TrueChessGame.GameEngine
             List<ChessBoard> resultpromotion = new List<ChessBoard>();
             foreach (ChessBoard promotiontempboard in result)
             {
-                tempboard = promotiontempboard.ShallowCopy();
+                tempboard = promotiontempboard.DeepCopy();
                 char promotionfile = file;
                 for (char tempfile = 'a'; tempfile <= 'h'; tempfile++)
                 {
@@ -417,13 +453,13 @@ namespace TrueChessGame.GameEngine
                 }
                 //now Promotions!
                 tempboard[promotionfile, 8] = (sbyte)DefaultPieces.WhitekNight;
-                resultpromotion.Add(tempboard.ShallowCopy());
+                resultpromotion.Add(tempboard.DeepCopy());
                 tempboard[promotionfile, 8] = (sbyte)DefaultPieces.WhiteBishop;
-                resultpromotion.Add(tempboard.ShallowCopy());
+                resultpromotion.Add(tempboard.DeepCopy());
                 tempboard[promotionfile, 8] = (sbyte)DefaultPieces.WhiteRook;
-                resultpromotion.Add(tempboard.ShallowCopy());
+                resultpromotion.Add(tempboard.DeepCopy());
                 tempboard[promotionfile, 8] = (sbyte)DefaultPieces.WhiteQueen;
-                resultpromotion.Add(tempboard.ShallowCopy());
+                resultpromotion.Add(tempboard.DeepCopy());
             }
             return resultpromotion;
         }
@@ -490,13 +526,13 @@ namespace TrueChessGame.GameEngine
             WhitePiece.GetVerticalDownDestinations(board, moves, current);
             WhitePiece.GetHorizontalLeftDestinations(board, moves, current);
             WhitePiece.GetHorizontalRightDestinations(board, moves, current);
-            Console.WriteLine(moves.Count);
+            //Console.WriteLine(moves.Count);
             foreach (Square move in moves)
             {
                 tempboard = Piece.PerformMove(board, current, move);
                 result = Piece.AddNewPosition(result, tempboard, true);
             }
-            Console.WriteLine(result.Count);
+            //Console.WriteLine(result.Count);
             return result;
         }
     }
@@ -533,7 +569,7 @@ namespace TrueChessGame.GameEngine
         public static bool IsSafe(ChessBoard board)
         {
             Square current = Piece.GetPosition(board, (sbyte)DefaultPieces.WhiteKing);
-            char file = current.file; int rank = current.rank;
+            char file = current._file; int rank = current._rank;
             List<Square> result = WhitePiece.GetPossibleBlackAttackersToSquare(board, current);
             return (result.Count == 0);
         }
@@ -570,7 +606,7 @@ namespace TrueChessGame.GameEngine
                         rookfile = tfile;
                     }
                 }
-                tempboard = board.ShallowCopy();
+                tempboard = board.DeepCopy();
                 bool CastlingAvailable = true;
 
                 for (char tfile = file; tfile <= 'g'; tfile++)
@@ -600,7 +636,7 @@ namespace TrueChessGame.GameEngine
                 for (char tfile = file; tfile <= 'g'; tfile++)
                 {
 
-                    ChessBoard temp2board = board.ShallowCopy();
+                    ChessBoard temp2board = board.DeepCopy();
                     temp2board[file, rank] = 0;
                     temp2board[tfile, rank] = (sbyte)DefaultPieces.WhiteKing;
                     if (!WhiteKing.IsSafe(temp2board))
@@ -631,7 +667,7 @@ namespace TrueChessGame.GameEngine
                         rookfile = tfile;
                     }
                 }
-                tempboard = board.ShallowCopy();
+                tempboard = board.DeepCopy();
                 bool CastlingAvailable = true;
                 for (char tfile = file; tfile >= 'c'; tfile--)
                 {
@@ -688,17 +724,21 @@ namespace TrueChessGame.GameEngine
     #endregion
 
     #region Black Pieces
-        public class BlackPiece:Piece
+    /*			
+        Review VV:
+            не бачу сенсу в такому наслідуванні, оскільки всі функції класу	Piece статичні
+    */
+    public class BlackPiece:Piece
         {
             public static List<ChessBoard> GetReversedPossibleWhitePositions(ChessBoard board, char file, sbyte rank, sbyte piece)
             {
-                ChessBoard tempboard = board.ShallowCopy();
+                ChessBoard tempboard = board.DeepCopy();
                 tempboard.ReverseSides();
                 Square tempsquare = new Square(file, rank);
                 tempsquare.Reverse();
                 char piecechar = FIDEnotation.GetLetter(piece);
                 FIDEnotation.GetPiecePositionsType function = FIDEnotation.GetWhitePiecePositionsType(piecechar);
-                List<ChessBoard> result = function(tempboard, tempsquare.file, tempsquare.rank);
+                List<ChessBoard> result = function(tempboard, tempsquare._file, tempsquare._rank);
                 foreach (ChessBoard temp in result)
                 {
                     temp.ReverseSides();
@@ -708,12 +748,12 @@ namespace TrueChessGame.GameEngine
 
             public static List<Square> GetPossibleWhiteAttackersToSquare(ChessBoard board, Square goalsquare)
             {
-                ChessBoard tempboard = board.ShallowCopy();
+                ChessBoard tempboard = board.DeepCopy();
                 tempboard.DebugConsoleSimpleDraw();
                 Console.WriteLine();
                 tempboard.ReverseSides();
                 //tempboard.DebugConsoleSimpleDraw();
-                Square tempsquare=new Square(goalsquare.file, goalsquare.rank);
+                Square tempsquare=new Square(goalsquare._file, goalsquare._rank);
                 tempsquare.Reverse();
                 var result = WhitePiece.GetPossibleBlackAttackersToSquare(tempboard, tempsquare);
                 for (int i = 0; i < result.Count; i++ )
@@ -731,7 +771,7 @@ namespace TrueChessGame.GameEngine
             public static List<ChessBoard> GetPossiblePositions(ChessBoard board, char file, sbyte rank)
             {
                 List<ChessBoard> result = new List<ChessBoard>();
-                ChessBoard tempboard = board.ShallowCopy();
+                ChessBoard tempboard = board.DeepCopy();
                 Square currentposition = new Square(file, rank);
                 if (DefaultInfo.WhiteEnPassantEndangered)
                 {
@@ -769,12 +809,12 @@ namespace TrueChessGame.GameEngine
 
             private static void GetEnPassantPositions(ref List<ChessBoard> result, ChessBoard board, Square currentposition)
             {
-                ChessBoard tempboard = board.ShallowCopy();
-                bool CheckEnPassant = DefaultInfo.EnPassantPossibleCapture.rank == currentposition.rank - 1 && (DefaultInfo.EnPassantPossibleCapture.file == (char)(currentposition.file + 1) || DefaultInfo.EnPassantPossibleCapture.file == (char)(currentposition.file - 1));
+                ChessBoard tempboard = board.DeepCopy();
+                bool CheckEnPassant = DefaultInfo.EnPassantPossibleCapture._rank == currentposition._rank - 1 && (DefaultInfo.EnPassantPossibleCapture._file == (char)(currentposition._file + 1) || DefaultInfo.EnPassantPossibleCapture._file == (char)(currentposition._file - 1));
                 if (CheckEnPassant)
                 {
                     tempboard = Piece.PerformMove(board, currentposition, DefaultInfo.EnPassantPossibleCapture);
-                    tempboard[DefaultInfo.EnPassantPossibleCapture.file, DefaultInfo.EnPassantPossibleCapture.rank + 1] = 0;
+                    tempboard[DefaultInfo.EnPassantPossibleCapture._file, DefaultInfo.EnPassantPossibleCapture._rank + 1] = 0;
                     result = Piece.AddNewPosition(result, tempboard, false);
                 }
             }
@@ -784,7 +824,7 @@ namespace TrueChessGame.GameEngine
                 List<ChessBoard> resultpromotion = new List<ChessBoard>();
                 foreach (ChessBoard promotiontempboard in result)
                 {
-                    tempboard = promotiontempboard.ShallowCopy();
+                    tempboard = promotiontempboard.DeepCopy();
                     char promotionfile = file;
                     for (char tempfile = 'a'; tempfile <= 'h'; tempfile++)
                     {
@@ -796,13 +836,13 @@ namespace TrueChessGame.GameEngine
                     }
                     //now Promotions!
                     tempboard[promotionfile, 1] = (sbyte)DefaultPieces.BlackkNight;
-                    resultpromotion.Add(tempboard.ShallowCopy());
+                    resultpromotion.Add(tempboard.DeepCopy());
                     tempboard[promotionfile, 1] = (sbyte)DefaultPieces.BlackBishop;
-                    resultpromotion.Add(tempboard.ShallowCopy());
+                    resultpromotion.Add(tempboard.DeepCopy());
                     tempboard[promotionfile, 1] = (sbyte)DefaultPieces.BlackRook;
-                    resultpromotion.Add(tempboard.ShallowCopy());
+                    resultpromotion.Add(tempboard.DeepCopy());
                     tempboard[promotionfile, 1] = (sbyte)DefaultPieces.BlackQueen;
-                    resultpromotion.Add(tempboard.ShallowCopy());
+                    resultpromotion.Add(tempboard.DeepCopy());
                 }
                 return resultpromotion;
             }
@@ -856,7 +896,7 @@ namespace TrueChessGame.GameEngine
         {
             public static bool IsSafe(ChessBoard board)
             {
-                ChessBoard tempboard = board.ShallowCopy();
+                ChessBoard tempboard = board.DeepCopy();
                 tempboard.ReverseSides();
                 return WhiteKing.IsSafe(tempboard);
             }
@@ -893,7 +933,7 @@ namespace TrueChessGame.GameEngine
                             rookfile = tfile;
                         }
                     }
-                    tempboard = board.ShallowCopy();
+                    tempboard = board.DeepCopy();
                     bool CastlingAvailable = true;
 
                     for (char tfile = file; tfile <= 'g'; tfile++)
@@ -923,7 +963,7 @@ namespace TrueChessGame.GameEngine
                     for (char tfile = file; tfile <= 'g'; tfile++)
                     {
 
-                        ChessBoard temp2board = board.ShallowCopy();
+                        ChessBoard temp2board = board.DeepCopy();
                         temp2board[file, rank] = 0;
                         temp2board[tfile, rank] = (sbyte)DefaultPieces.BlackKing;
                         if (!BlackKing.IsSafe(temp2board))
@@ -954,7 +994,7 @@ namespace TrueChessGame.GameEngine
                             rookfile = tfile;
                         }
                     }
-                    tempboard = board.ShallowCopy();
+                    tempboard = board.DeepCopy();
                     bool CastlingAvailable = true;
                     for (char tfile = file; tfile >= 'c'; tfile--)
                     {

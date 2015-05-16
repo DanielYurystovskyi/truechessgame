@@ -6,3 +6,11 @@ C:\Users\Daniel\Documents\Visual Studio 2013\Projects\TrueChessGame\TrueChessGam
 C:\Users\Daniel\Documents\Visual Studio 2013\Projects\TrueChessGame\TrueChessGame\obj\Debug\TrueChessGame.ConsoleUI.csprojResolveAssemblyReference.cache
 C:\Users\Daniel\Documents\Visual Studio 2013\Projects\TrueChessGame\TrueChessGame\obj\Debug\TrueChessGame.exe
 C:\Users\Daniel\Documents\Visual Studio 2013\Projects\TrueChessGame\TrueChessGame\obj\Debug\TrueChessGame.pdb
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\bin\Debug\TrueChessGame.exe.config
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\bin\Debug\TrueChessGame.exe
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\bin\Debug\TrueChessGame.pdb
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\bin\Debug\TrueChessGame.GameEngine.dll
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\bin\Debug\TrueChessGame.GameEngine.pdb
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\obj\Debug\TrueChessGame.ConsoleUI.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\obj\Debug\TrueChessGame.exe
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\obj\Debug\TrueChessGame.pdb

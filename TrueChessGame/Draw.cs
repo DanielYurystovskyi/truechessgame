@@ -18,8 +18,8 @@ namespace TrueChessGame.GameEngine
             Console.WriteLine("Pawn from e7 moves to e8 and promotes to Queen - \"e8Q\"");
             Console.WriteLine("Same for capture - \"de8Q\"");
             Console.WriteLine("kNight moves to f3 - \"Nf3\"");
-            Console.WriteLine("Two kNights may move to f3. So we also enter it's file - \"Ngf3\"");
-            Console.WriteLine("Or it's rank - \"N1f3\"");
+            Console.WriteLine("Two kNights may move to f3. So we also enter it's _file - \"Ngf3\"");
+            Console.WriteLine("Or it's _rank - \"N1f3\"");
             Console.WriteLine("Or even both - \"Ng1f3\"");
             Console.WriteLine("Short (king's) castling is entered as \"0-0\"");
             Console.WriteLine("And long (queen's) as \"0-0-0\"");
@@ -30,7 +30,7 @@ namespace TrueChessGame.GameEngine
         public static void DrawChessBoard(ChessBoard board)
         {
             // Code Review: Назва локальної змінної повинна починатися з малої літери.
-            bool IsWhite = true;
+            bool isWhite = true;
             //Console.WriteLine();
             Console.Write("   ");
             for (char tfile = 'a'; tfile <= 'h'; tfile++)
@@ -47,7 +47,7 @@ namespace TrueChessGame.GameEngine
                 {
                     //Console.WriteLine(tfile + " ");
                     //Console.Write(trank + " ");
-                    if (IsWhite)
+                    if (isWhite)
                     {
                         Console.BackgroundColor = ConsoleColor.DarkGray;
                         //Console.ForegroundColor = ConsoleColor.Black;
@@ -73,9 +73,9 @@ namespace TrueChessGame.GameEngine
                     //{
                     //    Console.Write("   ");
                     //}
-                    IsWhite = !IsWhite;
+                    isWhite = !isWhite;
                 }
-                IsWhite = !IsWhite;
+                isWhite = !isWhite;
                 Console.ResetColor();
                 Console.Write(" " + trank + " ");
             }
@@ -91,7 +91,7 @@ namespace TrueChessGame.GameEngine
         public static void DrawRevertedChessBoard(ChessBoard board)
         {
             // Code Review: Назва локальної змінної повинна починатися з малої літери.
-            bool IsWhite = true;
+            bool isWhite = true;
             //Console.WriteLine();
             Console.Write("   ");
             for (char tfile = 'h'; tfile >= 'a'; tfile--)
@@ -108,7 +108,7 @@ namespace TrueChessGame.GameEngine
                 {
                     //Console.WriteLine(tfile + " ");
                     //Console.Write(trank + " ");
-                    if (IsWhite)
+                    if (isWhite)
                     {
                         Console.BackgroundColor = ConsoleColor.DarkGray;
                         //Console.ForegroundColor = ConsoleColor.Black;
@@ -134,9 +134,9 @@ namespace TrueChessGame.GameEngine
                     //{
                     //    Console.Write("   ");
                     //}
-                    IsWhite = !IsWhite;
+                    isWhite = !isWhite;
                 }
-                IsWhite = !IsWhite;
+                isWhite = !isWhite;
                 Console.ResetColor();
                 Console.Write(" " + trank + " ");
             }

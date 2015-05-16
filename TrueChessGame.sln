@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueChessGame.GameEngine", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueChessGame.UnitTest", "TrueChessGame.UnitTest\TrueChessGame.UnitTest.csproj", "{D3839567-3FAA-488F-A13C-1EECE447E5C3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TrueChessGame.DesktopUI", "TrueChessGame.DesktopUI\TrueChessGame.DesktopUI.csproj", "{B772D51D-9250-4A8A-A3CC-5B389FD7A017}"
+EndProject
+Project("{54435603-DBB4-11D2-8724-00A0C9A8B90C}") = "Setup1", "Setup1\Setup1.vdproj", "{E94947DC-E293-45DC-9BE3-3E948088D392}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,12 @@ Global
 		{D3839567-3FAA-488F-A13C-1EECE447E5C3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D3839567-3FAA-488F-A13C-1EECE447E5C3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D3839567-3FAA-488F-A13C-1EECE447E5C3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B772D51D-9250-4A8A-A3CC-5B389FD7A017}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B772D51D-9250-4A8A-A3CC-5B389FD7A017}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B772D51D-9250-4A8A-A3CC-5B389FD7A017}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B772D51D-9250-4A8A-A3CC-5B389FD7A017}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E94947DC-E293-45DC-9BE3-3E948088D392}.Debug|Any CPU.ActiveCfg = Debug
+		{E94947DC-E293-45DC-9BE3-3E948088D392}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

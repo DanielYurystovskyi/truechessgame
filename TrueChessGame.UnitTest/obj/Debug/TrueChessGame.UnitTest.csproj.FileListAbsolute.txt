@@ -5,3 +5,10 @@ C:\Users\Daniel\documents\visual studio 2013\Projects\TrueChessGame\TrueChessGam
 C:\Users\Daniel\documents\visual studio 2013\Projects\TrueChessGame\TrueChessGame.UnitTest\obj\Debug\TrueChessGame.UnitTest.csprojResolveAssemblyReference.cache
 C:\Users\Daniel\documents\visual studio 2013\Projects\TrueChessGame\TrueChessGame.UnitTest\obj\Debug\TrueChessGame.UnitTest.dll
 C:\Users\Daniel\documents\visual studio 2013\Projects\TrueChessGame\TrueChessGame.UnitTest\obj\Debug\TrueChessGame.UnitTest.pdb
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.UnitTest\bin\Debug\TrueChessGame.UnitTest.dll
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.UnitTest\bin\Debug\TrueChessGame.UnitTest.pdb
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.UnitTest\bin\Debug\TrueChessGame.GameEngine.dll
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.UnitTest\bin\Debug\TrueChessGame.GameEngine.pdb
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.UnitTest\obj\Debug\TrueChessGame.UnitTest.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.UnitTest\obj\Debug\TrueChessGame.UnitTest.dll
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.UnitTest\obj\Debug\TrueChessGame.UnitTest.pdb

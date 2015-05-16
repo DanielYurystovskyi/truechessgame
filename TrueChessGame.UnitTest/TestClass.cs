@@ -15,7 +15,7 @@ namespace TrueChessGame.UnitTest
         {
             ChessBoard board = new ChessBoard();
             board.SetDefaultChessBoard();
-            ChessBoard sndboard = board.ShallowCopy();
+            ChessBoard sndboard = board.DeepCopy();
             Assert.AreEqual(board.GetHashCode(), sndboard.GetHashCode());
             sndboard = new ChessBoard(5);
             Assert.AreNotEqual(board.GetHashCode(), sndboard.GetHashCode());
@@ -154,7 +154,7 @@ namespace TrueChessGame.UnitTest
             board['c', 2] = (sbyte)DefaultPieces.BlackPawn;
             board['b', 8]=(sbyte)DefaultPieces.BlackRook;
             board['b', 1]=(sbyte)DefaultPieces.WhiteRook;
-            ChessBoard sndboard = board.ShallowCopy();
+            ChessBoard sndboard = board.DeepCopy();
             board = FIDEnotation.PerformWhiteMove(board, "a8N");
             board = FIDEnotation.PerformBlackMove(board, "a1N");
             sndboard['a', 7] = 0;
@@ -222,7 +222,7 @@ namespace TrueChessGame.UnitTest
         {
             ChessBoard board = new ChessBoard();
             board.SetDefaultChessBoard();
-            ChessBoard sndboard = board.ShallowCopy();
+            ChessBoard sndboard = board.DeepCopy();
             board = FIDEnotation.PerformWhiteMove(board, "e4");
             board = FIDEnotation.PerformBlackMove(board, "e5");
             board = FIDEnotation.PerformWhiteMove(board, "Nc3");
@@ -361,7 +361,7 @@ namespace TrueChessGame.UnitTest
             board['e', 1] = (sbyte)DefaultPieces.WhiteKing;
             board['a', 8] = (sbyte)DefaultPieces.BlackRook;
             board['e', 8] = (sbyte)DefaultPieces.BlackKing;
-            ChessBoard sboard = board.ShallowCopy();
+            ChessBoard sboard = board.DeepCopy();
             board = FIDEnotation.PerformWhiteMove(board, "0-0-0");
             sboard['a', 1] = 0;
             sboard['e', 1] = 0;
@@ -385,7 +385,7 @@ namespace TrueChessGame.UnitTest
             board['e', 1] = (sbyte)DefaultPieces.WhiteKing;
             board['h', 8] = (sbyte)DefaultPieces.BlackRook;
             board['e', 8] = (sbyte)DefaultPieces.BlackKing;
-            ChessBoard sboard = board.ShallowCopy();
+            ChessBoard sboard = board.DeepCopy();
             board = FIDEnotation.PerformWhiteMove(board, "0-0");
             sboard['h', 1] = 0;
             sboard['e', 1] = 0;
@@ -411,7 +411,7 @@ namespace TrueChessGame.UnitTest
             board['e', 1] = (sbyte)DefaultPieces.WhiteKing;
             board['a', 8] = (sbyte)DefaultPieces.BlackRook;
             board['e', 8] = (sbyte)DefaultPieces.BlackKing;
-            ChessBoard sboard = board.ShallowCopy();
+            ChessBoard sboard = board.DeepCopy();
             board = FIDEnotation.PerformBlackMove(board, "0-0-0");
             sboard['a', 8] = 0;
             sboard['e', 8] = 0;
@@ -438,7 +438,7 @@ namespace TrueChessGame.UnitTest
             board['e', 1] = (sbyte)DefaultPieces.WhiteKing;
             board['h', 8] = (sbyte)DefaultPieces.BlackRook;
             board['e', 8] = (sbyte)DefaultPieces.BlackKing;
-            ChessBoard sboard = board.ShallowCopy();
+            ChessBoard sboard = board.DeepCopy();
             board = FIDEnotation.PerformBlackMove(board, "0-0");
             sboard['h', 8] = 0;
             sboard['e', 8] = 0;

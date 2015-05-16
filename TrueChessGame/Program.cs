@@ -20,16 +20,17 @@ namespace TrueChessGame.ConsoleUI
             List<string> gamestory = new List<string>();
             string move = "";
             // Code Review: Назва локальної змінної повинна починатися з малої літери.
-            int NumberOfMoves=1;
+            int numberOfMoves=1;
             int rows = 20;
             int rowwidth = 20;
             //Draw.DrawChessBoard(gameboard);
             Console.Title="Dan's True Chess Game";
             do
             {
-                DrawGameField(gameboard, gamestory, ref move, NumberOfMoves, ref rows, rowwidth);
+                DrawGameField(gameboard, gamestory, ref move, numberOfMoves, ref rows, rowwidth);
                 if (DefaultInfo.IsWhiteMove)                
                 {
+                   // Console.WriteLine("White " + FIDEnotation.CheckIfArePossibleMoves(gameboard, true));
                     if (!FIDEnotation.CheckIfArePossibleMoves(gameboard, true))
                     {
                         if (!WhiteKing.IsSafe(gameboard))
@@ -42,16 +43,17 @@ namespace TrueChessGame.ConsoleUI
                 }
                 else
                 {
+                    //Console.WriteLine("Black "+ FIDEnotation.CheckIfArePossibleMoves(gameboard, false));
                     if (!FIDEnotation.CheckIfArePossibleMoves(gameboard, false))
                     {
                         if (!BlackKing.IsSafe(gameboard))
                         {
                             DefaultInfo.WhiteWin = true;
                         }
-                        
+
                         break;
                     }
-                    BlackMove(ref gameboard, ref notation, gamestory, ref move, ref NumberOfMoves);
+                    BlackMove(ref gameboard, ref notation, gamestory, ref move, ref numberOfMoves);
                 }
                 
             }
@@ -59,23 +61,23 @@ namespace TrueChessGame.ConsoleUI
             
             if (DefaultInfo.WhiteWin)
             {
-                gamestory[gamestory.Count] += "+";
+                gamestory[gamestory.Count-1] += "+";
                 move = " ";
-                DrawGameField(gameboard, gamestory, ref move, NumberOfMoves, ref rows, rowwidth);
+                DrawGameField(gameboard, gamestory, ref move, numberOfMoves, ref rows, rowwidth);
                 Console.WriteLine("White win!");
             }
             if (DefaultInfo.BlackWin)
             {
                 gamestory[gamestory.Count-1] += "+";
                 move = " ";
-                DrawGameField(gameboard, gamestory, ref move, NumberOfMoves, ref rows, rowwidth);
+                DrawGameField(gameboard, gamestory, ref move, numberOfMoves, ref rows, rowwidth);
                 Console.WriteLine("Black win!");
             }
             else
             {
-                gamestory[gamestory.Count] += "=";
+                gamestory[gamestory.Count-1] += "=";
                 move = " ";
-                DrawGameField(gameboard, gamestory, ref move, NumberOfMoves, ref rows, rowwidth);
+                DrawGameField(gameboard, gamestory, ref move, numberOfMoves, ref rows, rowwidth);
                 Console.WriteLine("Draw");
             }
 
@@ -202,7 +204,7 @@ namespace TrueChessGame.ConsoleUI
             catch (ArgumentException)
             {
                // Console.WriteLine(e.Message);
-               // BlackMove(ref gameboard, ref notation, gamestory, ref move, ref NumberOfMoves);
+               // BlackMove(ref gameboard, ref notation, gamestory, ref move, ref numberOfMoves);
                 return;
             }
         }

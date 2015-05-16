@@ -6,6 +6,12 @@ using System.Threading.Tasks;
 
 namespace TrueChessGame.GameEngine
 {
+    /*			
+		Review VV:
+		    1) призначення класу не відповідає його назві, 
+            оскільки поля класу відображають стан гри
+            2) поля цього класу повинні бути нестатичними поля сутності "Game"
+	*/
     public static class DefaultInfo
     {
         // Code Review: Поля класу не повинні бути public.
@@ -15,6 +21,8 @@ namespace TrueChessGame.GameEngine
         public static bool WhiteWin;
 
         public static bool BlackWin;
+
+        public static bool EndOfGame;
 
         public static bool WhiteAsideRookIsUnMoved;
 
@@ -40,9 +48,10 @@ namespace TrueChessGame.GameEngine
 
         public static void SetDefaultValues()
         {
-             IsWhiteMove = true;
-             WhiteWin = false;
-             BlackWin = false;
+            IsWhiteMove = true;
+            WhiteWin = false;
+            BlackWin = false;
+            EndOfGame = false;
             WhiteAsideRookIsUnMoved = true;
             WhiteHsideRookIsUnMoved = true;
             BlackAsideRookIsUnMoved = true;

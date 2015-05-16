@@ -3,3 +3,8 @@ C:\Users\Daniel\Documents\Visual Studio 2013\Projects\TrueChessGame\TrueChessGam
 C:\Users\Daniel\Documents\Visual Studio 2013\Projects\TrueChessGame\TrueChessGame.GameEngine\obj\Debug\TrueChessGame.GameEngine.dll
 C:\Users\Daniel\Documents\Visual Studio 2013\Projects\TrueChessGame\TrueChessGame.GameEngine\obj\Debug\TrueChessGame.GameEngine.pdb
 C:\Users\Daniel\documents\visual studio 2013\Projects\TrueChessGame\TrueChessGame.GameEngine\obj\Debug\TrueChessGame.GameEngine.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.GameEngine\bin\Debug\TrueChessGame.GameEngine.dll
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.GameEngine\bin\Debug\TrueChessGame.GameEngine.pdb
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.GameEngine\obj\Debug\TrueChessGame.GameEngine.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.GameEngine\obj\Debug\TrueChessGame.GameEngine.dll
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.GameEngine\obj\Debug\TrueChessGame.GameEngine.pdb
