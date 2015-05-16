@@ -124,7 +124,11 @@ namespace TrueChessGame.GameEngine
             }
             return result;
         }
-
+        /*			
+			Review VV:
+			    на мою думку, назва не відповідає призначенню методу
+                оскільки метод робить глибоку копію (а не поверхневу)
+		*/
         public ChessBoard ShallowCopy()
         {
             return new ChessBoard(this);

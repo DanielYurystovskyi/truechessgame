@@ -6,18 +6,47 @@ using System.Threading.Tasks;
 
 namespace TrueChessGame.GameEngine
 {
+    /*			
+		Review VV:
+		    для читабельності такі записи краще робити у багато рядків	
+	*/
+    public enum DefaultPieces : sbyte
+    {
+        BlackKing = -6,
+        BlackQueen = -5,
+        BlackRook = -4,
+        BlackBishop = -3,
+        BlackkNight = -2,
+        BlackPawn = -1,
+        Empty = 0,
+        WhitePawn = 1,
+        WhitekNight = 2,
+        WhiteBishop = 3,
+        WhiteRook = 4,
+        WhiteQueen = 5,
+        WhiteKing = 6
+    };
 
-    public enum DefaultPieces : sbyte { BlackKing = -6, BlackQueen = -5, BlackRook = -4, BlackBishop = -3, BlackkNight = -2, BlackPawn = -1, Empty = 0, WhitePawn = 1, WhitekNight = 2, WhiteBishop = 3, WhiteRook = 4, WhiteQueen = 5, WhiteKing = 6 };
+    /*			
+		Review VV:
+		    1) не зрозуміле призначення цього класу
+            на мою думку, його функції повинні бути нестатичними функціями сутності "Game"	
+            2) всі функції класів-фігур повинні бути нестатичними
 
+	*/
     public class Piece
     {
         public static ChessBoard PerformMove(ChessBoard board, Square oldposition, Square newposition)
         {
-            sbyte piecetype=board[oldposition.file, oldposition.rank];
+            sbyte piecetype = board[oldposition.file, oldposition.rank];
+            /*			
+			    Review VV:
+			        для чого необхідно робити копію ігрового поля?
+		    */
             ChessBoard tempboard = board.ShallowCopy();
             tempboard[oldposition.file, oldposition.rank] = 0;
             tempboard[newposition.file, newposition.rank] = piecetype;
-           // tempboard.DebugConsoleSimpleDraw(); Console.WriteLine();
+            // tempboard.DebugConsoleSimpleDraw(); Console.WriteLine();
             return tempboard;
         }
         
@@ -63,7 +92,7 @@ namespace TrueChessGame.GameEngine
             moves[7] = new Square((char)(file - 1), rank - 1);
             return moves;
         }
-        
+
         public static Square GetPosition(ChessBoard board, sbyte piece)
         {
             Square result = new Square();
@@ -84,6 +113,10 @@ namespace TrueChessGame.GameEngine
     }
 
     #region White Pieces
+    /*			
+		Review VV:
+		    не бачу сенсу в такому наслідуванні, оскільки всі функції класу	Piece статичні
+	*/
     public class WhitePiece : Piece
     {
         public static void GetDiagonalDestinations(ChessBoard board, ref List<Square> moves, Square current, int multfile, int multrank)
@@ -688,7 +721,11 @@ namespace TrueChessGame.GameEngine
     #endregion
 
     #region Black Pieces
-        public class BlackPiece:Piece
+    /*			
+        Review VV:
+            не бачу сенсу в такому наслідуванні, оскільки всі функції класу	Piece статичні
+    */
+    public class BlackPiece:Piece
         {
             public static List<ChessBoard> GetReversedPossibleWhitePositions(ChessBoard board, char file, sbyte rank, sbyte piece)
             {
