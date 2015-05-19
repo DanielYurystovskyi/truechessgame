@@ -1,0 +1,12 @@
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.DesktopUI\bin\Debug\TrueChessGame.DesktopUI.exe.config
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.DesktopUI\bin\Debug\TrueChessGame.DesktopUI.exe
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.DesktopUI\bin\Debug\TrueChessGame.DesktopUI.pdb
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.DesktopUI\obj\Debug\TrueChessGame.DesktopUI.csprojResolveAssemblyReference.cache
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.DesktopUI\obj\Debug\TrueChessGame.DesktopUI.Properties.Resources.resources
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.DesktopUI\obj\Debug\TrueChessGame.DesktopUI.csproj.GenerateResource.Cache
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.DesktopUI\obj\Debug\TrueChessGame.DesktopUI.exe
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.DesktopUI\obj\Debug\TrueChessGame.DesktopUI.pdb
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.DesktopUI\obj\Debug\TrueChessGame.DesktopUI.MainForm.resources
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.DesktopUI\bin\Debug\TrueChessGame.GameEngine.dll
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.DesktopUI\bin\Debug\TrueChessGame.GameEngine.pdb
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame.DesktopUI\obj\Debug\TrueChessGame.DesktopUI.WhitePawnPromotion.resources

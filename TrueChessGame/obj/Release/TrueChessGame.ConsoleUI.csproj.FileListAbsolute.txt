@@ -1,0 +1,7 @@
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\bin\Release\TrueChessGame.exe.config
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\bin\Release\TrueChessGame.exe
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\bin\Release\TrueChessGame.pdb
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\bin\Release\TrueChessGame.GameEngine.dll
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\bin\Release\TrueChessGame.GameEngine.pdb
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\obj\Release\TrueChessGame.exe
+C:\Users\Daniel\Documents\Visual Studio 2013\Projects\truechessgame-master\TrueChessGame\obj\Release\TrueChessGame.pdb
