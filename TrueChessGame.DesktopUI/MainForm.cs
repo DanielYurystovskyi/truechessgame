@@ -1,4 +1,6 @@
-﻿using System;
+﻿
+//Code Review: використані зайві директиви
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -159,6 +161,7 @@ namespace TrueChessGame.DesktopUI
             }
         }
 
+        //Code Review: зайві відступи
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -177,7 +180,8 @@ namespace TrueChessGame.DesktopUI
             //buttonChosen.Parent = MainChessboard;
 
         }
-
+        
+        //Code Review:  дуже великий метод, краще розбити на менші
         private void Chessboard_Click(object sender, EventArgs e)
         {
             //this.OnClick(new EventArgs());
@@ -290,7 +294,8 @@ namespace TrueChessGame.DesktopUI
                 return;
             }
         }
-
+        
+        //Code Review: погана обробка виключення
         private void BlackMove()
         {
             DefaultInfo.BlackEnPassantEndangered = false;
@@ -326,7 +331,8 @@ namespace TrueChessGame.DesktopUI
             //}
             return inMainChessboard || inReversedChessboard;
         }
-
+        
+        //Code Review: неправильна назва методу -> GetFideNotation
         private string GetFIDENotation(Square start, Square end, ChessBoard board)
         {
             string result="";
@@ -363,7 +369,8 @@ namespace TrueChessGame.DesktopUI
             }
             return result;
         }
-
+        
+        //Code Review: неправильна назва методу
         private static void GetKingFIDENotation(ref Square start, ref Square end, ref string result)
         {
             if (start._rank == end._rank && start._file - end._file == -2)
@@ -379,7 +386,8 @@ namespace TrueChessGame.DesktopUI
                 result = "K" + end._file + end._rank.ToString();
             }
         }
-
+        
+        //Code Review: неправильна назва методу
         private void GetPawnFIDENotation(ref Square start, ref Square end, ref string result)
         {
             result += start._file;
@@ -413,7 +421,8 @@ namespace TrueChessGame.DesktopUI
             this.linkLabel1.LinkVisited = true;
             System.Diagnostics.Process.Start(e.Link.LinkData as string);
         }
-
+        
+        //Code Review: невідомо до якого батона відбувається клік, потрібно вказати імя.
         private void button1_Click(object sender, EventArgs e)
         {
             foreach (Control pcb in _pieces)
